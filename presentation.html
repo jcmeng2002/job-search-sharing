@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>求职经验分享 | 孟嘉辰</title>
+<style>
+@font-face {
+  font-family: 'TencentSans';
+  src: url('./TencentSans-W3.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TencentSans';
+  src: url('./TencentSans-W7.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --blue: #0052D9;
+  --blue-light: #4A8FFF;
+  --blue-pale: #E8F0FE;
+  --blue-ghost: #F0F5FF;
+  --green: #00A870;
+  --green-light: #2DD4A0;
+  --green-pale: #E6FAF3;
+  --orange: #F57C00;
+  --orange-light: #FFB74D;
+  --orange-pale: #FFF3E0;
+  --red: #E53935;
+  --red-pale: #FFEBEE;
+  --purple: #7C4DFF;
+  --purple-pale: #F3E5F5;
+  --cyan: #00ACC1;
+  --cyan-pale: #E0F7FA;
+  --bg: #FAFBFE;
+  --bg-warm: #FFFDF8;
+  --surface: #FFFFFF;
+  --text-1: #1A1A2E;
+  --text-2: #5C5C7A;
+  --text-3: #9E9EB8;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
+  --shadow-xl: 0 16px 60px rgba(0,0,0,0.12);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'TencentSans', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Slide System ===== */
+.presentation { width:100vw; height:100vh; position:relative; }
+
+.slide {
+  position: absolute;
+  top:0; left:0;
+  width:100vw; height:100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 72px;
+  opacity: 0;
+  transform: scale(0.96) translateY(12px);
+  transition: opacity 0.55s cubic-bezier(.4,0,.2,1), transform 0.55s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+  overflow-y: auto;
+}
+.slide.active {
+  opacity:1; transform: scale(1) translateY(0); pointer-events: auto;
+}
+.slide.prev {
+  opacity:0; transform: scale(0.96) translateY(-12px);
+}
+
+/* ===== Nav ===== */
+.nav-bar {
+  position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
+  display:flex; align-items:center; gap:10px; z-index:100;
+  background: var(--surface);
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:40px; padding:8px 20px;
+  box-shadow: var(--shadow-md);
+}
+.nav-btn {
+  width:36px; height:36px; border-radius:50%;
+  border:1.5px solid rgba(0,0,0,0.08); background:transparent;
+  color:var(--text-2); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; transition:all 0.25s;
+}
+.nav-btn:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-ghost); }
+.slide-dots { display:flex; gap:5px; }
+.dot {
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(0,0,0,0.1); transition:all 0.3s; cursor:pointer;
+}
+.dot.active { background:var(--blue); width:22px; border-radius:4px; }
+.slide-counter { color:var(--text-3); font-size:12px; min-width:44px; text-align:center; font-weight:300; }
+
+/* ===== Progress ===== */
+.progress-bar {
+  position:fixed; top:0; left:0; height:3px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-light), var(--green-light));
+  z-index:200; transition:width 0.45s cubic-bezier(.4,0,.2,1);
+}
+
+/* ===== Common ===== */
+.section-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:5px 16px; border-radius:20px;
+  background:var(--blue-pale); color:var(--blue);
+  font-size:12px; font-weight:700; letter-spacing:0.5px; margin-bottom:16px;
+}
+.section-tag::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--blue); }
+
+.slide-title {
+  font-size:38px; font-weight:700; line-height:1.25; margin-bottom:10px; color:var(--text-1);
+}
+.slide-subtitle {
+  font-size:16px; color:var(--text-2); font-weight:300; margin-bottom:28px; line-height:1.6;
+}
+
+.card {
+  background:var(--surface); border:1px solid rgba(0,0,0,0.05);
+  border-radius:var(--radius); padding:22px;
+  box-shadow:var(--shadow-sm); transition:all 0.3s cubic-bezier(.4,0,.2,1);
+}
+.card:hover { box-shadow:var(--shadow-md); transform:translateY(-3px); }
+
+.card-title { font-size:16px; font-weight:700; color:var(--text-1); margin-bottom:8px; }
+.card-desc { font-size:13px; color:var(--text-2); line-height:1.7; }
+.highlight { color:var(--blue); font-weight:700; }
+
+.tag {
+  display:inline-block; padding:4px 11px; border-radius:6px;
+  font-size:12px; font-weight:700; margin:0 5px 5px 0;
+}
+.tag-blue { background:var(--blue-pale); color:var(--blue); }
+.tag-green { background:var(--green-pale); color:var(--green); }
+.tag-orange { background:var(--orange-pale); color:var(--orange); }
+.tag-purple { background:var(--purple-pale); color:var(--purple); }
+.tag-red { background:var(--red-pale); color:var(--red); }
+.tag-cyan { background:var(--cyan-pale); color:var(--cyan); }
+
+/* ===== Flip Card ===== */
+.flip-card { perspective:800px; cursor:pointer; }
+.flip-inner {
+  position:relative; width:100%; height:100%;
+  transition:transform 0.6s cubic-bezier(.4,0,.2,1);
+  transform-style:preserve-3d;
+}
+.flip-card.flipped .flip-inner { transform:rotateY(180deg); }
+.flip-front, .flip-back {
+  position:absolute; width:100%; height:100%;
+  backface-visibility:hidden; border-radius:var(--radius);
+  padding:22px; display:flex; flex-direction:column;
+}
+.flip-front { background:var(--surface); border:1px solid rgba(0,0,0,0.05); box-shadow:var(--shadow-sm); }
+.flip-back {
+  background:var(--blue); color:#fff; transform:rotateY(180deg);
+  border:none; justify-content:center;
+}
+.flip-back p { color:rgba(255,255,255,0.9); font-size:14px; line-height:1.8; }
+.flip-hint {
+  position:absolute; bottom:10px; right:14px;
+  font-size:11px; color:var(--text-3); opacity:0.6;
+}
+.flip-card.flipped .flip-hint { display:none; }
+.flip-back-hint {
+  position:absolute; bottom:10px; right:14px;
+  font-size:11px; color:rgba(255,255,255,0.5);
+}
+
+/* ===== Reveal Block ===== */
+.reveal-block { cursor:pointer; }
+.reveal-content {
+  max-height:0; overflow:hidden; opacity:0;
+  transition:max-height 0.45s cubic-bezier(.4,0,.2,1), opacity 0.35s;
+}
+.reveal-block.open .reveal-content { max-height:300px; opacity:1; }
+.reveal-trigger::after { content:'  ▸'; font-size:12px; color:var(--blue); transition:transform 0.3s; display:inline-block; }
+.reveal-block.open .reveal-trigger::after { transform:rotate(90deg); }
+
+/* ===== Animated Counter ===== */
+.counter-num {
+  font-size:36px; font-weight:700; color:var(--blue);
+  display:inline-block;
+}
+
+/* ===== Tab Switcher ===== */
+.tab-switcher {
+  display:flex; gap:4px; margin-bottom:20px;
+  background:var(--bg); border-radius:var(--radius-sm); padding:4px;
+  border:1px solid rgba(0,0,0,0.05);
+}
+.tab-btn {
+  padding:8px 20px; border-radius:8px; font-size:13px; font-weight:700;
+  cursor:pointer; border:none; background:transparent; color:var(--text-3);
+  transition:all 0.25s; white-space:nowrap;
+}
+.tab-btn:hover { color:var(--text-2); }
+.tab-btn.active { background:var(--surface); color:var(--blue); box-shadow:var(--shadow-sm); }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; animation: tabFade 0.35s ease; }
+@keyframes tabFade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+/* ===== Accordion ===== */
+.accordion-item {
+  border:1px solid rgba(0,0,0,0.05); border-radius:var(--radius-sm);
+  margin-bottom:8px; background:var(--surface); box-shadow:var(--shadow-sm);
+  overflow:hidden; transition:all 0.3s;
+}
+.accordion-item:hover { box-shadow:var(--shadow-md); }
+.accordion-item.open { border-color:var(--blue); border-left:3px solid var(--blue); }
+.accordion-header {
+  padding:14px 18px; cursor:pointer; display:flex; justify-content:space-between;
+  align-items:center; font-weight:700; font-size:14px;
+  user-select:none; transition:background 0.2s;
+}
+.accordion-header:hover { background:var(--blue-ghost); }
+.accordion-arrow {
+  font-size:12px; color:var(--blue); transition:transform 0.3s; display:inline-block;
+}
+.accordion-item.open .accordion-arrow { transform:rotate(180deg); }
+.accordion-body {
+  max-height:0; overflow:hidden; transition:max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.3s;
+  padding:0 18px;
+}
+.accordion-item.open .accordion-body { max-height:400px; padding:0 18px 16px; }
+
+/* ===== Photo Card (interactive) ===== */
+.photo-card {
+  position:relative; border-radius:var(--radius); overflow:hidden;
+  cursor:pointer; box-shadow:var(--shadow-sm); border:1px solid rgba(0,0,0,0.05);
+  transition:all 0.35s cubic-bezier(.4,0,.2,1);
+}
+.photo-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+.photo-card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
+.photo-card:hover img { transform:scale(1.05); }
+.photo-card-overlay {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:14px 16px;
+  background:linear-gradient(transparent, rgba(0,0,0,0.7));
+  color:#fff; transform:translateY(100%);
+  transition:transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+.photo-card:hover .photo-card-overlay { transform:translateY(0); }
+.photo-card-overlay h5 { font-size:13px; font-weight:700; margin-bottom:2px; }
+.photo-card-overlay p { font-size:11px; opacity:0.85; }
+
+/* ===== Lightbox ===== */
+.lightbox {
+  position:fixed; top:0; left:0; width:100vw; height:100vh;
+  background:rgba(0,0,0,0.85); z-index:500;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.35s;
+  backdrop-filter:blur(8px);
+}
+.lightbox.open { opacity:1; pointer-events:auto; }
+.lightbox-inner {
+  max-width:85vw; max-height:85vh; position:relative;
+  transform:scale(0.9); transition:transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+.lightbox.open .lightbox-inner { transform:scale(1); }
+.lightbox-inner img {
+  max-width:100%; max-height:75vh; border-radius:12px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+}
+.lightbox-caption {
+  text-align:center; color:rgba(255,255,255,0.9); margin-top:16px;
+  font-size:14px; font-weight:700;
+}
+.lightbox-caption span { font-weight:300; font-size:12px; color:rgba(255,255,255,0.6); display:block; margin-top:4px; }
+.lightbox-close {
+  position:absolute; top:-40px; right:0;
+  width:32px; height:32px; border-radius:50%; border:none;
+  background:rgba(255,255,255,0.15); color:#fff; font-size:18px;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:background 0.2s;
+}
+.lightbox-close:hover { background:rgba(255,255,255,0.3); }
+.lightbox-nav {
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:44px; height:44px; border-radius:50%; border:none;
+  background:rgba(255,255,255,0.12); color:#fff; font-size:20px;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:background 0.2s;
+}
+.lightbox-nav:hover { background:rgba(255,255,255,0.25); }
+.lightbox-prev { left:-60px; }
+.lightbox-next { right:-60px; }
+
+/* ===== Floating Tooltip ===== */
+.has-tip { position:relative; cursor:help; border-bottom:1px dashed var(--blue-light); }
+.has-tip .tip-text {
+  position:absolute; bottom:calc(100% + 10px); left:50%; transform:translateX(-50%);
+  padding:10px 16px; border-radius:var(--radius-sm); background:var(--text-1); color:#fff;
+  font-size:12px; white-space:nowrap; pointer-events:none;
+  opacity:0; transition:opacity 0.25s, transform 0.25s;
+  transform:translateX(-50%) translateY(4px);
+  box-shadow:var(--shadow-lg); z-index:50;
+  line-height:1.6; max-width:280px; white-space:normal;
+}
+.has-tip:hover .tip-text { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* ===== Swipe Reveal ===== */
+.swipe-reveal {
+  position:relative; overflow:hidden; border-radius:var(--radius-sm);
+  cursor:pointer; user-select:none;
+}
+.swipe-reveal-bg {
+  position:absolute; top:0; left:0; right:0; bottom:0;
+  background:linear-gradient(135deg, var(--blue), var(--blue-light));
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-weight:700; font-size:14px; padding:16px;
+  text-align:center;
+}
+.swipe-reveal-fg {
+  position:relative; background:var(--surface);
+  border:1px solid rgba(0,0,0,0.05); padding:16px;
+  transition:transform 0.4s cubic-bezier(.4,0,.2,1);
+  z-index:2;
+}
+.swipe-reveal.open .swipe-reveal-fg {
+  transform:translateX(100%);
+}
+
+/* ===== Cover ===== */
+.cover-deco {
+  position:absolute; top:0; left:0; width:100%; height:100%; overflow:hidden; z-index:0;
+  background: linear-gradient(160deg, #FAFBFE 0%, #F0F5FF 40%, #E6FAF3 100%);
+}
+.cover-blob {
+  position:absolute; border-radius:50%; filter:blur(60px); opacity:0.5;
+  animation:blobFloat 10s ease-in-out infinite;
+}
+.blob1 { width:400px; height:400px; background:var(--blue-pale); top:-80px; right:10%; animation-delay:0s; }
+.blob2 { width:350px; height:350px; background:var(--green-pale); bottom:-60px; left:5%; animation-delay:-4s; }
+.blob3 { width:280px; height:280px; background:var(--orange-pale); top:40%; left:50%; animation-delay:-7s; }
+@keyframes blobFloat {
+  0%,100% { transform:translate(0,0) scale(1); }
+  33% { transform:translate(20px,-15px) scale(1.04); }
+  66% { transform:translate(-15px,15px) scale(0.97); }
+}
+
+.cover-content {
+  position:relative; z-index:2; text-align:center;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%;
+}
+.cover-avatar {
+  width:88px; height:88px; border-radius:24px;
+  background:linear-gradient(135deg, var(--blue), var(--blue-light));
+  display:flex; align-items:center; justify-content:center;
+  font-size:38px; font-weight:700; color:#fff; margin-bottom:28px;
+  box-shadow: 0 8px 30px rgba(0,82,217,0.2);
+  animation: avatarPop 0.8s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes avatarPop {
+  0% { transform:scale(0); opacity:0; }
+  100% { transform:scale(1); opacity:1; }
+}
+.cover-content h1 {
+  font-size:52px; font-weight:700; line-height:1.2; margin-bottom:12px; color:var(--text-1);
+  animation: fadeUp 0.7s 0.2s both;
+}
+.cover-content h2 {
+  font-size:20px; font-weight:300; color:var(--text-2); margin-bottom:36px;
+  animation: fadeUp 0.7s 0.35s both;
+}
+@keyframes fadeUp {
+  0% { transform:translateY(20px); opacity:0; }
+  100% { transform:translateY(0); opacity:1; }
+}
+.meta-pills {
+  display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
+  animation: fadeUp 0.7s 0.5s both;
+}
+.meta-pill {
+  padding:8px 20px; border-radius:20px; font-size:14px; font-weight:700;
+  border:1px solid rgba(0,0,0,0.06); background:var(--surface);
+  box-shadow:var(--shadow-sm);
+}
+.cover-hint {
+  position:absolute; bottom:72px; left:50%; transform:translateX(-50%);
+  color:var(--text-3); font-size:12px; z-index:2;
+  animation:pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+
+/* ===== About (compact) ===== */
+.about-compact {
+  width:100%; max-width:1100px;
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;
+}
+.about-card {
+  padding:20px; background:var(--surface); border:1px solid rgba(0,0,0,0.05);
+  border-radius:var(--radius); box-shadow:var(--shadow-sm);
+  transition:all 0.3s; position:relative; overflow:hidden;
+}
+.about-card:hover { box-shadow:var(--shadow-md); transform:translateY(-3px); }
+.about-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  transform:scaleX(0); transform-origin:left; transition:transform 0.35s;
+}
+.about-card:hover::before { transform:scaleX(1); }
+.about-card:nth-child(1)::before { background:linear-gradient(90deg, var(--blue), var(--blue-light)); }
+.about-card:nth-child(2)::before { background:linear-gradient(90deg, var(--green), var(--green-light)); }
+.about-card:nth-child(3)::before { background:linear-gradient(90deg, var(--orange), var(--orange-light)); }
+.about-icon {
+  width:40px; height:40px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; margin-bottom:12px;
+}
+.about-card h4 { font-size:14px; font-weight:700; margin-bottom:4px; }
+.about-card p { font-size:12px; color:var(--text-2); line-height:1.6; }
+.about-tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:8px; }
+
+/* ===== Timeline ===== */
+.timeline-wrap { width:100%; max-width:1050px; }
+.tl {
+  position:relative; padding-left:36px;
+}
+.tl::before {
+  content:''; position:absolute; left:11px; top:0; bottom:0; width:2px;
+  background: linear-gradient(to bottom, var(--blue), var(--blue-light), var(--green-light), transparent);
+  border-radius:2px;
+}
+.tl-item {
+  position:relative; margin-bottom:20px; padding:18px 22px;
+  background:var(--surface); border:1px solid rgba(0,0,0,0.05);
+  border-radius:var(--radius-sm); box-shadow:var(--shadow-sm);
+  transition:all 0.3s;
+}
+.tl-item:hover { box-shadow:var(--shadow-md); transform:translateX(5px); border-left:3px solid var(--blue); }
+.tl-item::before {
+  content:''; position:absolute; left:-30px; top:22px;
+  width:10px; height:10px; border-radius:50%;
+  background:var(--surface); border:2.5px solid var(--blue);
+  box-shadow:0 0 0 3px var(--blue-pale);
+  transition:all 0.3s;
+}
+.tl-item:hover::before { background:var(--blue); }
+.tl-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
+.tl-company { font-size:15px; font-weight:700; }
+.tl-role { font-size:13px; color:var(--blue); font-weight:700; }
+.tl-period { font-size:12px; color:var(--text-3); white-space:nowrap; }
+.tl-desc { font-size:12px; color:var(--text-2); line-height:1.6; }
+
+/* ===== Work Cards ===== */
+.work-wrap { width:100%; max-width:1100px; display:flex; flex-direction:column; gap:18px; }
+.work-badges { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:4px; }
+.w-badge { padding:6px 16px; border-radius:8px; font-size:13px; font-weight:700; }
+.wb-tencent { background:var(--blue-pale); color:var(--blue); }
+.wb-red { background:var(--red-pale); color:var(--red); }
+.wb-bili { background:var(--orange-pale); color:var(--orange); }
+.wb-byte { background:var(--purple-pale); color:var(--purple); }
+
+.w-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.w-card {
+  padding:22px; background:var(--surface); border:1px solid rgba(0,0,0,0.05);
+  border-radius:var(--radius); box-shadow:var(--shadow-sm);
+  transition:all 0.35s cubic-bezier(.4,0,.2,1);
+  position:relative; overflow:hidden;
+}
+.w-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--blue), var(--blue-light));
+  transform:scaleX(0); transform-origin:left; transition:transform 0.35s;
+}
+.w-card:hover::before { transform:scaleX(1); }
+.w-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+.w-card-icon {
+  width:42px; height:42px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; margin-bottom:14px;
+}
+.wci-blue { background:var(--blue-pale); }
+.wci-green { background:var(--green-pale); }
+.wci-orange { background:var(--orange-pale); }
+.wci-purple { background:var(--purple-pale); }
+.wci-red { background:var(--red-pale); }
+.wci-cyan { background:var(--cyan-pale); }
+
+.w-card h4 { font-size:15px; font-weight:700; margin-bottom:6px; }
+.w-card p { font-size:12px; color:var(--text-2); line-height:1.7; }
+.metric { display:inline-flex; align-items:baseline; gap:3px; margin-top:8px; }
+.metric .num { font-size:26px; font-weight:700; color:var(--blue); }
+.metric .unit { font-size:12px; color:var(--text-3); }
+
+/* ===== Search ===== */
+.search-wrap { width:100%; max-width:1100px; }
+.search-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.search-sec h3 { font-size:16px; font-weight:700; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.search-sec h3 .ico { font-size:18px; }
+
+.flow-row { display:flex; align-items:center; gap:0; padding:16px 0; flex-wrap:wrap; }
+.flow-step { flex:1; min-width:120px; text-align:center; }
+.flow-box {
+  padding:14px 10px; background:var(--surface);
+  border:1px solid rgba(0,0,0,0.05); border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-sm); transition:all 0.3s; cursor:pointer;
+}
+.flow-box:hover { border-color:var(--blue); box-shadow:var(--shadow-md); transform:translateY(-3px); }
+.flow-num { font-size:22px; font-weight:700; color:var(--blue); margin-bottom:2px; }
+.flow-label { font-size:13px; font-weight:700; }
+.flow-time { font-size:10px; color:var(--text-3); }
+.flow-arrow { width:24px; color:var(--blue-light); font-size:16px; flex-shrink:0; text-align:center; }
+
+/* ===== Internship Types ===== */
+.type-wrap { width:100%; max-width:1100px; }
+.type-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.type-card {
+  padding:22px; border-radius:var(--radius); border:1px solid rgba(0,0,0,0.05);
+  background:var(--surface); box-shadow:var(--shadow-sm);
+  transition:all 0.3s;
+}
+.type-card:hover { box-shadow:var(--shadow-md); transform:translateY(-3px); }
+.type-card h4 { font-size:16px; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.type-card p { font-size:12px; color:var(--text-2); line-height:1.7; }
+.type-card ul { font-size:12px; color:var(--text-2); line-height:2; padding-left:18px; margin-top:6px; }
+.type-card ul li::marker { color:var(--blue); }
+
+/* ===== Resume Tips ===== */
+.resume-wrap { width:100%; max-width:1100px; }
+.tips-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.tip-card {
+  padding:20px; background:var(--surface); border:1px solid rgba(0,0,0,0.05);
+  border-radius:var(--radius); box-shadow:var(--shadow-sm);
+  display:flex; gap:14px; transition:all 0.3s; cursor:pointer;
+}
+.tip-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.tip-num {
+  width:36px; height:36px; border-radius:10px;
+  background:linear-gradient(135deg, var(--blue), var(--blue-light));
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; font-weight:700; color:#fff; flex-shrink:0;
+}
+.tip-body h4 { font-size:15px; font-weight:700; margin-bottom:4px; }
+.tip-body p { font-size:12px; color:var(--text-2); line-height:1.7; }
+
+.do-dont { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px; }
+.do-box, .dont-box {
+  padding:18px; border-radius:var(--radius-sm);
+  border:1px solid rgba(0,0,0,0.05);
+}
+.do-box { background:var(--green-pale); border-color:rgba(0,168,112,0.15); }
+.dont-box { background:var(--red-pale); border-color:rgba(229,57,53,0.15); }
+.do-box h4 { color:var(--green); font-size:14px; font-weight:700; margin-bottom:10px; }
+.dont-box h4 { color:var(--red); font-size:14px; font-weight:700; margin-bottom:10px; }
+.do-box li, .dont-box li {
+  font-size:12px; color:var(--text-2); line-height:1.9; list-style:none;
+  padding-left:18px; position:relative;
+}
+.do-box li::before { content:'✓'; position:absolute; left:0; color:var(--green); font-weight:700; }
+.dont-box li::before { content:'✗'; position:absolute; left:0; color:var(--red); font-weight:700; }
+
+/* ===== Compare ===== */
+.cmp-wrap { width:100%; max-width:1100px; }
+.cmp-table {
+  display:grid; grid-template-columns:100px 1fr 1fr;
+  border:1px solid rgba(0,0,0,0.06); border-radius:var(--radius); overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.cmp-hdr {
+  padding:14px 16px; font-weight:700; font-size:13px; text-align:center;
+}
+.cmp-hdr.dim-hdr { background:var(--bg); color:var(--text-3); }
+.cmp-hdr.net-hdr { background:var(--blue-pale); color:var(--blue); }
+.cmp-hdr.gov-hdr { background:var(--orange-pale); color:var(--orange); }
+.cmp-dim {
+  padding:12px 16px; font-size:13px; font-weight:700;
+  background:var(--bg); border-top:1px solid rgba(0,0,0,0.04);
+  display:flex; align-items:center; gap:6px;
+}
+.cmp-cell {
+  padding:12px 16px; font-size:12px; color:var(--text-2); line-height:1.6;
+  border-top:1px solid rgba(0,0,0,0.04); background:var(--surface);
+}
+.cmp-cell.net { border-left:1px solid rgba(0,0,0,0.04); }
+.cmp-cell.gov { border-left:1px solid rgba(0,0,0,0.04); }
+.cmp-summary { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px; }
+
+/* ===== Closing ===== */
+.closing-content {
+  text-align:center; max-width:720px; position:relative; z-index:2;
+}
+.closing-quote {
+  font-size:28px; font-weight:700; line-height:1.5; margin-bottom:20px;
+  color:var(--text-1);
+}
+.closing-desc {
+  font-size:16px; color:var(--text-2); line-height:1.9; margin-bottom:32px; font-weight:300;
+}
+.closing-contacts { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.ct-item {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 20px; border-radius:var(--radius-sm);
+  background:var(--surface); border:1px solid rgba(0,0,0,0.06);
+  font-size:13px; color:var(--text-2); box-shadow:var(--shadow-sm);
+  transition:all 0.3s;
+}
+.ct-item:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.ct-item strong { color:var(--text-1); }
+
+/* ===== Photo Grid (in slides) ===== */
+.photo-row { display:flex; gap:12px; margin-top:14px; }
+.photo-card-sm {
+  flex:1; min-width:0; height:120px; border-radius:var(--radius-sm);
+  overflow:hidden; position:relative; cursor:pointer;
+  border:1px solid rgba(0,0,0,0.05); box-shadow:var(--shadow-sm);
+  transition:all 0.3s;
+}
+.photo-card-sm:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.photo-card-sm img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
+.photo-card-sm:hover img { transform:scale(1.08); }
+.photo-card-sm .pc-label {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:6px 10px; background:linear-gradient(transparent, rgba(0,0,0,0.65));
+  color:#fff; font-size:11px; font-weight:700;
+  transform:translateY(100%); transition:transform 0.3s;
+}
+.photo-card-sm:hover .pc-label { transform:translateY(0); }
+
+/* ===== Stagger animation ===== */
+.stagger > * {
+  opacity:0; transform:translateY(16px);
+  animation:staggerIn 0.5s cubic-bezier(.4,0,.2,1) both;
+}
+.stagger > *:nth-child(1) { animation-delay:0.05s; }
+.stagger > *:nth-child(2) { animation-delay:0.1s; }
+.stagger > *:nth-child(3) { animation-delay:0.15s; }
+.stagger > *:nth-child(4) { animation-delay:0.2s; }
+.stagger > *:nth-child(5) { animation-delay:0.25s; }
+.stagger > *:nth-child(6) { animation-delay:0.3s; }
+@keyframes staggerIn {
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width:900px) {
+  .slide { padding:36px 24px; }
+  .cover-content h1 { font-size:32px; }
+  .slide-title { font-size:26px; }
+  .about-compact { grid-template-columns:1fr; }
+  .search-grid, .tips-grid, .do-dont, .cmp-summary, .type-grid { grid-template-columns:1fr; }
+  .w-grid { grid-template-columns:1fr; }
+  .cmp-table { grid-template-columns:70px 1fr 1fr; font-size:11px; }
+  .flow-arrow { display:none; }
+  .lightbox-prev { left:10px; }
+  .lightbox-next { right:10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1,event)">◀</button>
+    <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1,event)">▶</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption">
+      <span id="lightbox-title"></span>
+      <span id="lightbox-desc"></span>
+    </div>
+  </div>
+</div>
+
+<div class="presentation" id="presentation">
+
+  <!-- ===== 0: Cover ===== -->
+  <div class="slide active" data-index="0">
+    <div class="cover-deco">
+      <div class="cover-blob blob1"></div>
+      <div class="cover-blob blob2"></div>
+      <div class="cover-blob blob3"></div>
+    </div>
+    <div class="cover-content">
+      <div class="cover-avatar">🚀</div>
+      <h1>从校园到职场</h1>
+      <h2>互联网求职经验分享</h2>
+      <div class="meta-pills">
+        <span class="meta-pill">🎓 南京大学硕士</span>
+        <span class="meta-pill">💼 5段大厂实习</span>
+        <span class="meta-pill">🔄 HR × 产品 × 校招</span>
+      </div>
+    </div>
+    <div class="cover-hint">按 → 键 / 滑动 / 点击箭头翻页</div>
+  </div>
+
+  <!-- ===== 1: About Me (compact) ===== -->
+  <div class="slide" data-index="1">
+    <div class="section-tag">PART 01 · 关于我</div>
+    <div class="slide-title">你好，我是孟嘉辰</div>
+    <div class="slide-subtitle">南开→南大 | 马克思主义学院 × 新闻传播双学位 | 5段互联网大厂实习</div>
+    <div class="about-compact">
+      <div class="about-card">
+        <div class="about-icon" style="background:var(--blue-pale);">🎓</div>
+        <h4>教育背景</h4>
+        <p><strong>南京大学·硕士</strong> 马克思主义学院 思政 | 保送<br><strong>南开大学·本科</strong> 思政 GPA 3.7 · 广电双学位 GPA 3.9</p>
+        <div class="about-tags">
+          <span class="tag tag-green">保送硕士</span>
+          <span class="tag tag-purple">双学位</span>
+          <span class="tag tag-blue">中共党员</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-icon" style="background:var(--green-pale);">🏅</div>
+        <h4>在校经历</h4>
+        <p>南开校团委学生负责人（统筹近400人）<br>天津市学联骨干 · 院学生会主席</p>
+        <div class="about-tags">
+          <span class="tag tag-orange">组织协调</span>
+          <span class="tag tag-blue">项目管理</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-icon" style="background:var(--orange-pale);">🛠</div>
+        <h4>技能 & 项目</h4>
+        <p>SQL · Python · AI Coding · SPSS · PR/PS<br>ADADD广告资讯站 · 奖项管理系统 · AI Agent工具集</p>
+        <div class="about-tags">
+          <span class="tag tag-blue">SQL</span>
+          <span class="tag tag-green">Python</span>
+          <span class="tag tag-orange">AI Coding</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 2: Timeline ===== -->
+  <div class="slide" data-index="2">
+    <div class="section-tag">PART 01 · 实习地图</div>
+    <div class="slide-title">五段大厂，从HR到产品再回来</div>
+    <div class="slide-subtitle">每一段都有明确的成长目标——招聘→校招运营→产品→HRBP+AI</div>
+    <div class="timeline-wrap">
+      <div class="tl stagger">
+        <div class="tl-item reveal-block" onclick="this.classList.toggle('open')">
+          <div class="tl-head">
+            <div>
+              <div class="tl-company"><span class="tag tag-blue" style="margin-right:6px">腾讯</span>CDG-AMS · HRBP-AI STAR</div>
+              <div class="tl-role">组织发展 · BP日常 · AI赋能</div>
+            </div>
+            <div class="tl-period">2026.04 - 06</div>
+          </div>
+          <span class="reveal-trigger" style="font-size:12px;color:var(--blue);">展开详情</span>
+          <div class="reveal-content">
+            <div class="tl-desc">职位整合（UI开发/视觉设计/交互设计→产品体验设计）；搭建广告资讯网站、荣誉激励线上化网站及企微Bot，服务近千人；根据AI发展趋势推动组织人才架构变化</div>
+          </div>
+        </div>
+        <div class="tl-item reveal-block" onclick="this.classList.toggle('open')">
+          <div class="tl-head">
+            <div>
+              <div class="tl-company"><span class="tag tag-red" style="margin-right:6px">小红书</span>Trust&Safety · 产品实习生</div>
+              <div class="tl-role">生态应急 · AI Agent · 舆论保障</div>
+            </div>
+            <div class="tl-period">2025.12 - 2026.04</div>
+          </div>
+          <span class="reveal-trigger" style="font-size:12px;color:var(--blue);">展开详情</span>
+          <div class="reveal-content">
+            <div class="tl-desc">参与30+应急事件解决，独立跟进10+风险事件，研判100+舆情事件；搭建6个AI自动化工具；专项治理全流程（劣迹艺人转世/CNY/REDGALA/AI治理）；P0零重大风险</div>
+          </div>
+        </div>
+        <div class="tl-item reveal-block" onclick="this.classList.toggle('open')">
+          <div class="tl-head">
+            <div>
+              <div class="tl-company"><span class="tag tag-blue" style="margin-right:6px">腾讯</span>S3校招中心 · 人力培训生</div>
+              <div class="tl-role">校招运营 · 中台建设 · 数据分析 · 人才猎聘</div>
+            </div>
+            <div class="tl-period">2025.03 - 12</div>
+          </div>
+          <span class="reveal-trigger" style="font-size:12px;color:var(--blue);">展开详情</span>
+          <div class="reveal-content">
+            <div class="tl-desc">独立负责60+校园社群运营；主牵3个中台功能建设；制作15期校招运营快报；参与ICML/ICLR/CVPR顶会人才猎聘</div>
+          </div>
+        </div>
+        <div class="tl-item reveal-block" onclick="this.classList.toggle('open')">
+          <div class="tl-head">
+            <div>
+              <div class="tl-company"><span class="tag tag-orange" style="margin-right:6px">B站</span>人力资源部 · 人力实习生</div>
+              <div class="tl-role">招聘全流程 · 数据分析 · 渠道拓展</div>
+            </div>
+            <div class="tl-period">2024.11 - 2025.02</div>
+          </div>
+          <span class="reveal-trigger" style="font-size:12px;color:var(--blue);">展开详情</span>
+          <div class="reveal-content">
+            <div class="tl-desc">月内入职30+实习生；跟进80位校招三方、30余位谈薪；拓展渠道获取简历50+份，转化offer 12个</div>
+          </div>
+        </div>
+        <div class="tl-item reveal-block" onclick="this.classList.toggle('open')">
+          <div class="tl-head">
+            <div>
+              <div class="tl-company"><span class="tag tag-purple" style="margin-right:6px">字节跳动</span>中国信息平台 · HRBP实习生</div>
+              <div class="tl-role">人才检索 · BP工作 · 数据可视化</div>
+            </div>
+            <div class="tl-period">2024.01 - 04</div>
+          </div>
+          <span class="reveal-trigger" style="font-size:12px;color:var(--blue);">展开详情</span>
+          <div class="reveal-content">
+            <div class="tl-desc">日均推荐20份简历，业务通过率60%；双周约面50+；招聘效率可视化，动态优化目标</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 3: Campus Recruitment ===== -->
+  <div class="slide" data-index="3">
+    <div class="section-tag">PART 02 · 互联网工作内容</div>
+    <div class="slide-title">校招运营：连接校园与职场的桥梁</div>
+    <div class="slide-subtitle">从"被招聘"到"做招聘"——站在HR视角理解校招全流程</div>
+    <div class="work-wrap">
+      <div class="work-badges">
+        <span class="w-badge wb-tencent">腾讯 S3 校招中心</span>
+      </div>
+      <!-- Tab Switcher -->
+      <div class="tab-switcher" id="campus-tabs">
+        <button class="tab-btn active" onclick="switchTab('campus','tab-ops')">🎯 运营工作</button>
+        <button class="tab-btn" onclick="switchTab('campus','tab-data')">📊 数据驱动</button>
+        <button class="tab-btn" onclick="switchTab('campus','tab-hunt')">🔬 人才猎聘</button>
+        <button class="tab-btn" onclick="switchTab('campus','tab-photo')">📸 现场直击</button>
+      </div>
+      <!-- Tab Panels -->
+      <div class="tab-panel active" id="campus-tab-ops">
+        <div class="w-grid stagger">
+          <div class="w-card">
+            <div class="w-card-icon wci-blue">👥</div>
+            <h4>校园社群运营</h4>
+            <p>独立负责60+校园社群，覆盖全国重点高校；定期推送校招信息、答疑解惑、组织线上宣讲。</p>
+            <div class="metric"><span class="num" data-target="60">0</span><span class="unit">+社群</span></div>
+          </div>
+          <div class="w-card">
+            <div class="w-card-icon wci-green">🏗</div>
+            <h4>中台功能建设</h4>
+            <p>主牵3个中台功能建设，推动校招流程标准化与工具化——从手工操作到系统支撑。</p>
+            <div class="metric"><span class="num" data-target="3">0</span><span class="unit">个中台功能</span></div>
+          </div>
+          <div class="w-card">
+            <div class="w-card-icon wci-orange">📰</div>
+            <h4>运营快报制作</h4>
+            <p>制作15期校招运营快报，数据可视化呈现招聘进度、渠道效果、面试转化率。</p>
+            <div class="metric"><span class="num" data-target="15">0</span><span class="unit">期快报</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel" id="campus-tab-data">
+        <div class="w-grid stagger">
+          <div class="w-card" style="grid-column:span 2;">
+            <div class="w-card-icon wci-purple">📈</div>
+            <h4>数据分析全流程</h4>
+            <p>校招数据核对→运营快报制作→招聘效率可视化→渠道成效分析。每一步都用数据说话，<span class="highlight">没有数据的运营就是拍脑袋</span>。</p>
+            <p style="margin-top:8px;">我做的运营快报，从简历量→筛选→面试→offer→入职，全链路追踪，实时发现问题、动态调整策略。</p>
+          </div>
+          <div class="w-card">
+            <div class="w-card-icon wci-blue">🔑</div>
+            <h4>核心洞察</h4>
+            <p>校招的核心不是"招到人"，而是"招对人"。数据帮你看清：哪个渠道转化高？哪个环节流失大？哪类人才最难触达？</p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel" id="campus-tab-hunt">
+        <div class="w-grid stagger">
+          <div class="w-card">
+            <div class="w-card-icon wci-red">🔬</div>
+            <h4>顶会人才猎聘</h4>
+            <p>参与<span class="has-tip">ICML/ICLR/CVPR<span class="tip-text">国际机器学习大会/国际学习表征会议/计算机视觉与模式识别会议——AI领域三大顶会</span></span>目标人才建联，完成深度访谈。</p>
+            <div class="metric"><span class="num" data-target="3">0</span><span class="unit">大顶会</span></div>
+          </div>
+          <div class="w-card" style="grid-column:span 2;">
+            <div class="w-card-icon wci-cyan">🎯</div>
+            <h4>为什么校招需要猎聘？</h4>
+            <p>顶尖AI人才不会主动投简历——他们是被争抢的。校招团队需要主动出击，在顶会上建立联系、传递腾讯的技术愿景和研究资源，才能吸引到最优秀的人加入。<br><br>这就是为什么"HR也要懂业务"——你不懂AI在做什么，就没办法和AI科学家对话。</p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel" id="campus-tab-photo">
+        <div style="margin-bottom:12px;font-size:13px;color:var(--text-2);">📷 点击图片查看大图</div>
+        <div class="photo-row">
+          <div class="photo-card-sm" onclick="openLightbox(0)">
+            <img src="./photos/tencent-campus-1.jpg" alt="腾讯2025实习生招聘现场">
+            <div class="pc-label">腾讯2025实习生招聘现场</div>
+          </div>
+          <div class="photo-card-sm" onclick="openLightbox(1)">
+            <img src="./photos/tencent-campus-2.jpg" alt="腾讯2026校园招聘双选会">
+            <div class="pc-label">腾讯2026校园招聘 · 上海双选会</div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px;border-left:3px solid var(--blue);">
+          <div class="card-title">💡 来自校招一线的感受</div>
+          <div class="card-desc">站在校招的"另一边"，我才真正理解——HR看简历只有6秒，不是不负责，而是量太大。你的简历，必须在这6秒内让他停下来。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 4: HRBP Work ===== -->
+  <div class="slide" data-index="4">
+    <div class="section-tag">PART 02 · 互联网工作内容</div>
+    <div class="slide-title">HRBP：不只是"做招聘"</div>
+    <div class="slide-subtitle">为业务部门的组织生命周期负责——招聘、培训、组织发展、AI赋能，远比你想象的重要</div>
+    <div class="work-wrap">
+      <div class="work-badges">
+        <span class="w-badge wb-tencent">腾讯 CDG-AMS</span>
+        <span class="w-badge wb-tencent">腾讯 S3</span>
+        <span class="w-badge wb-byte">字节跳动</span>
+        <span class="w-badge wb-bili">B站</span>
+      </div>
+      <div class="w-grid stagger">
+        <div class="w-card">
+          <div class="w-card-icon wci-blue">🏢</div>
+          <h4>组织发展（OD）</h4>
+          <p>与PD合作进行职位整合，将UI开发、视觉设计、交互设计整合至产品体验设计。根据AI发展趋势，推动组织人才架构变化。</p>
+          <div class="metric"><span class="num" data-target="3">0</span><span class="unit">个职位整合</span></div>
+        </div>
+        <div class="w-card">
+          <div class="w-card-icon wci-green">📊</div>
+          <h4>数据分析驱动</h4>
+          <p>校招数据核对、运营快报制作、招聘效率可视化、渠道成效分析——没有数据的BP就是拍脑袋。</p>
+          <div class="metric"><span class="num" data-target="15">0</span><span class="unit">期运营快报</span></div>
+        </div>
+        <div class="w-card">
+          <div class="w-card-icon wci-purple">🤖</div>
+          <h4>AI赋能提效</h4>
+          <p>搭建广告资讯网站（自动抓取10平台）；荣誉激励线上化+企微Bot+知识库。在AI时代，会用工具的人效率完全不一样。</p>
+          <div class="metric"><span class="num" data-target="1000">0</span><span class="unit">+人服务覆盖</span></div>
+        </div>
+      </div>
+      <div class="w-grid stagger">
+        <div class="w-card">
+          <div class="w-card-icon wci-orange">🎯</div>
+          <h4>招聘全流程</h4>
+          <p>简历推荐→约面→面试跟进→谈薪→发offer→入职跟踪，BP深度参与全链路。</p>
+        </div>
+        <div class="w-card">
+          <div class="w-card-icon wci-blue">🤝</div>
+          <h4>BP日常支撑</h4>
+          <p>荣誉激励、HC盘点、招聘需求提报——BP是团队的"大管家"，支撑业务运转。</p>
+        </div>
+        <div class="w-card">
+          <div class="w-card-icon wci-red">🔬</div>
+          <h4>顶尖人才猎聘</h4>
+          <p>与ICML/ICLR/CVPR顶会目标人才建联，完成深度访谈；组内AI领域技术分享。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 5: Product Work ===== -->
+  <div class="slide" data-index="5">
+    <div class="section-tag">PART 02 · 互联网工作内容</div>
+    <div class="slide-title">产品经理：在不确定性中找答案</div>
+    <div class="slide-subtitle">从HR跨到产品——两个岗位的核心能力高度重合：理解人、定义问题、推动解决</div>
+    <div class="work-wrap">
+      <div class="work-badges">
+        <span class="w-badge wb-red">小红书 Trust&Safety</span>
+      </div>
+      <div class="w-grid stagger">
+        <div class="w-card">
+          <div class="w-card-icon wci-red">🚨</div>
+          <h4>生态应急响应</h4>
+          <p>基于上游需求/监管指令完成风险研判、应急规则制定及处置，联动多方确保落地。</p>
+          <div class="metric"><span class="num" data-target="30">0</span><span class="unit">+应急事件</span></div>
+        </div>
+        <div class="w-card">
+          <div class="w-card-icon wci-orange">📢</div>
+          <h4>舆论保障与研判</h4>
+          <p>极端社会新闻站内发酵判断，根据工信部指令综合处置；研判100+舆情事件，快速判断风险等级并制定策略，P0零失误。</p>
+          <div class="metric"><span class="num" data-target="100">0</span><span class="unit">+事件研判</span></div>
+        </div>
+        <div class="w-card">
+          <div class="w-card-icon wci-purple">⚡</div>
+          <h4>AI Agent赋能</h4>
+          <p>用Open Claw搭建6个自动化工具——前端巡检、策略写入查询导出、应急事件自动写入。AI重构工作流，确实在发生。</p>
+          <div class="metric"><span class="num" data-target="6">0</span><span class="unit">个AI工具</span></div>
+        </div>
+      </div>
+      <div class="w-grid stagger">
+        <div class="w-card" style="grid-column:span 2;">
+          <div class="w-card-icon wci-blue">📋</div>
+          <h4>专项治理全流程</h4>
+          <p>劣迹艺人转世、CNY、REDGALA、AI治理等专项——从研判标准制定、规则撰写、策略输出到回查风险判定，发挥中台角色。<span class="highlight">P0级别零重大风险。</span></p>
+        </div>
+        <div class="w-card">
+          <div class="w-card-icon wci-green">📝</div>
+          <h4>产品文档与迭代</h4>
+          <p>撰写BRD文档，协助小红鹰应急协同板块功能迭代，赋能多风险域协同和数据透视。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 6: Job Search ===== -->
+  <div class="slide" data-index="6">
+    <div class="section-tag">PART 03 · 求职方式与简历</div>
+    <div class="slide-title">怎么找到好实习？</div>
+    <div class="slide-subtitle">信息差是最大的壁垒——知道在哪里找、什么时候投、怎么投，就赢了一半</div>
+    <div class="search-wrap">
+      <!-- Internship Types (Accordion) -->
+      <div style="margin-bottom:20px;">
+        <div class="accordion-item open">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            ☀️ 暑期实习 —— 有转正机会，相当于秋招提前批
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p style="font-size:13px;color:var(--text-2);line-height:1.8;">通过暑期实习转正，拿的就是秋招offer。28年毕业的话，27年2月就要开始关注，最早8月就能拿到保底offer。</p>
+            <ul style="font-size:12px;color:var(--text-2);line-height:2;padding-left:18px;margin-top:6px;">
+              <li>转正率 <span class="has-tip">50%-70%<span class="tip-text">根据不同公司和部门有所差异，腾讯暑期实习转正率在60%左右</span></span></li>
+              <li>2-5月网申，3-6月面试</li>
+              <li>考公同学也可当出路，但注意精力分配</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            📅 日常实习 —— 全年滚动，随时可以投
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p style="font-size:13px;color:var(--blue);font-weight:700;margin-bottom:8px;">主要渠道（点击图片看大图）</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;">
+              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(2)">
+                <img src="./photos/app-boss.jpg" alt="BOSS直聘">
+                <div class="pc-label">BOSS直聘</div>
+              </div>
+              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(3)">
+                <img src="./photos/app-shixiseng.jpg" alt="实习僧">
+                <div class="pc-label">实习僧</div>
+              </div>
+              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(4)">
+                <img src="./photos/app-maimai.jpg" alt="脉脉">
+                <div class="pc-label">脉脉</div>
+              </div>
+            </div>
+            <ul style="font-size:12px;color:var(--text-2);line-height:2;padding-left:18px;">
+              <li>招聘平台：BOSS直聘、实习僧、猎聘、51job——响应快，可提前沟通</li>
+              <li>内推群：交流群里发继任招聘、团队新增——还能认识人脉</li>
+              <li>公众号：信息差变现，很多机会不上官网</li>
+              <li>官网网申：也可以，但反馈速度相对慢</li>
+            </ul>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(5)">
+                <img src="./photos/site-baidu.png" alt="百度招聘官网">
+                <div class="pc-label">百度招聘官网</div>
+              </div>
+              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(6)">
+                <img src="./photos/site-bytedance.png" alt="字节跳动招聘官网">
+                <div class="pc-label">字节跳动招聘官网</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            💬 内推群 / 交流群 —— 认识人脉的最好方式
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p style="font-size:13px;color:var(--text-2);line-height:1.8;margin-bottom:10px;">找实习交流群，继任招聘、团队新增需求都有发布，还能认识人脉。很多机会不出现在官网上。</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(7)">
+                <img src="./photos/wechat-group-1.jpg" alt="内推群">
+                <div class="pc-label">内推群</div>
+              </div>
+              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(8)">
+                <img src="./photos/wechat-group-2.jpg" alt="实习交流群">
+                <div class="pc-label">实习交流群</div>
+              </div>
+              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(9)">
+                <img src="./photos/wechat-group-3.jpg" alt="秋招信息群">
+                <div class="pc-label">秋招信息群</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Timeline -->
+      <div class="search-grid">
+        <div class="search-sec">
+          <h3><span class="ico">⏰</span> 校招时间线</h3>
+          <div class="flow-row">
+            <div class="flow-step"><div class="flow-box"><div class="flow-num">01</div><div class="flow-label">日常实习</div><div class="flow-time">全年滚动</div></div></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step"><div class="flow-box"><div class="flow-num">02</div><div class="flow-label">暑期实习</div><div class="flow-time">2-5月网申</div></div></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step"><div class="flow-box"><div class="flow-num">03</div><div class="flow-label">秋招提前批</div><div class="flow-time">6-8月</div></div></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step"><div class="flow-box"><div class="flow-num">04</div><div class="flow-label">正式秋招</div><div class="flow-time">8-11月</div></div></div>
+          </div>
+        </div>
+        <div class="search-sec">
+          <div class="card" style="border-left:3px solid var(--blue);height:100%;display:flex;flex-direction:column;justify-content:center;">
+            <div class="card-desc" style="font-weight:700;color:var(--blue);font-size:15px;">💡 关键策略：先实习转正 > 秋招海投</div>
+            <div class="card-desc" style="margin-top:8px;">暑期实习转正率50%-70%，远高于秋招通过率。能走实习转正就别等秋招。</div>
+            <div class="card-desc" style="margin-top:8px;color:var(--orange);font-weight:700;">⚠️ 特别提醒：考公优先的话，实习可以放弃，别两头顾不上。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 7: Resume ===== -->
+  <div class="slide" data-index="7">
+    <div class="section-tag">PART 03 · 求职方式与简历</div>
+    <div class="slide-title">简历：让HR在6秒内停下来</div>
+    <div class="slide-subtitle">HR看一份简历平均6秒——你必须在6秒内让他停下来</div>
+    <div class="resume-wrap">
+      <!-- 官网 vs 纸质 (swipe reveal) -->
+      <div class="type-grid" style="margin-bottom:16px;">
+        <div class="swipe-reveal" onclick="this.classList.toggle('open')">
+          <div class="swipe-reveal-bg">💻 官网简历可以写全，不限一页<br>——HR上下滑着看，信息越多越好</div>
+          <div class="swipe-reveal-fg">
+            <h4 style="font-size:14px;font-weight:700;">💻 官网简历 <span style="font-size:11px;color:var(--text-3);font-weight:300;">← 点击滑开</span></h4>
+            <p style="font-size:12px;color:var(--text-2);margin-top:4px;">可以写全，不限一页</p>
+          </div>
+        </div>
+        <div class="swipe-reveal" onclick="this.classList.toggle('open')">
+          <div class="swipe-reveal-bg" style="background:linear-gradient(135deg,var(--orange),var(--orange-light));">📄 纸质简历必须一页纸<br>——但不意味着内容少，做过的事可以高度凝练</div>
+          <div class="swipe-reveal-fg">
+            <h4 style="font-size:14px;font-weight:700;">📄 招聘会纸质简历 <span style="font-size:11px;color:var(--text-3);font-weight:300;">← 点击滑开</span></h4>
+            <p style="font-size:12px;color:var(--text-2);margin-top:4px;">必须一页纸，但不意味着内容少</p>
+          </div>
+        </div>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card flip-card" onclick="this.classList.toggle('flipped')" style="min-height:120px;">
+          <div class="flip-inner">
+            <div class="flip-front" style="flex-direction:row;gap:14px;align-items:flex-start;">
+              <div class="tip-num">01</div>
+              <div style="flex:1;">
+                <h4 style="font-size:15px;font-weight:700;margin-bottom:4px;">明确目标，DIY简历</h4>
+                <p style="font-size:12px;color:var(--text-2);line-height:1.6;">投HR突出HR，投产品突出产品，别海投</p>
+              </div>
+              <div class="flip-hint">翻转</div>
+            </div>
+            <div class="flip-back">
+              <p>投产品岗 → 产品经历放前面，HR经历只突出AI搭建能力<br>投HR岗 → HR经历放前面，产品经历简写<br><br>秋招最多准备3-4份简历，每份都要拿得出手</p>
+              <div class="flip-back-hint">翻回</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-card flip-card" onclick="this.classList.toggle('flipped')" style="min-height:120px;">
+          <div class="flip-inner">
+            <div class="flip-front" style="flex-direction:row;gap:14px;align-items:flex-start;">
+              <div class="tip-num">02</div>
+              <div style="flex:1;">
+                <h4 style="font-size:15px;font-weight:700;margin-bottom:4px;">STAR法则有技巧</h4>
+                <p style="font-size:12px;color:var(--text-2);line-height:1.6;">以结果推过程，别堆背景</p>
+              </div>
+              <div class="flip-hint">翻转</div>
+            </div>
+            <div class="flip-back">
+              <p>先说做了什么项目、你的定位是什么，再说你做了哪些关键动作、贡献了什么。<br><br>❌ 把背景和执行全堆上去<br>✅ "我负责XX项目，独立完成XX步骤，GMV提升XX%"</p>
+              <div class="flip-back-hint">翻回</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-card flip-card" onclick="this.classList.toggle('flipped')" style="min-height:120px;">
+          <div class="flip-inner">
+            <div class="flip-front" style="flex-direction:row;gap:14px;align-items:flex-start;">
+              <div class="tip-num">03</div>
+              <div style="flex:1;">
+                <h4 style="font-size:15px;font-weight:700;margin-bottom:4px;">用动词开头，数据量化</h4>
+                <p style="font-size:12px;color:var(--text-2);line-height:1.6;">数字比形容词有说服力100倍</p>
+              </div>
+              <div class="flip-hint">翻转</div>
+            </div>
+            <div class="flip-back">
+              <p>❌ "参与招聘工作"<br>✅ "月内入职30+人，日均推荐20份简历，通过率60%"<br><br>用数字替换模糊词</p>
+              <div class="flip-back-hint">翻回</div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-card flip-card" onclick="this.classList.toggle('flipped')" style="min-height:120px;">
+          <div class="flip-inner">
+            <div class="flip-front" style="flex-direction:row;gap:14px;align-items:flex-start;">
+              <div class="tip-num">04</div>
+              <div style="flex:1;">
+                <h4 style="font-size:15px;font-weight:700;margin-bottom:4px;">排版简洁干净</h4>
+                <p style="font-size:12px;color:var(--text-2);line-height:1.6;">简历能看出你的态度</p>
+              </div>
+              <div class="flip-hint">翻转</div>
+            </div>
+            <div class="flip-back">
+              <p>不是花里胡哨，但至少字要对齐、内容要清晰。<br><br>3-4份简历，每份都拿得出手——至少是干净的、简洁的、内容清楚的。</p>
+              <div class="flip-back-hint">翻回</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="do-dont">
+        <div class="do-box">
+          <h4>✅ 应该这样做</h4>
+          <ul>
+            <li>用动词开头（负责、搭建、独立完成）</li>
+            <li>数据量化成果（"提升60%"而非"大幅提升"）</li>
+            <li>排版简洁，重点加粗</li>
+            <li>每投一个岗位微调关键词</li>
+            <li>PDF格式投递</li>
+          </ul>
+        </div>
+        <div class="dont-box">
+          <h4>❌ 不要这样做</h4>
+          <ul>
+            <li>写空话（"整理档案""协助上级完成任务"）</li>
+            <li>只写职责不写成果</li>
+            <li>简历超过一页（纸质版）</li>
+            <li>投Word格式</li>
+            <li>一份简历投所有岗位</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 8: Compare ===== -->
+  <div class="slide" data-index="8">
+    <div class="section-tag">PART 04 · 选择与取舍</div>
+    <div class="slide-title">互联网 vs 国央企/体制内</div>
+    <div class="slide-subtitle">没有孰优孰劣，只有适不适合——每个人个性不同，辩证看待</div>
+    <div class="cmp-wrap">
+      <div class="cmp-table">
+        <div class="cmp-hdr dim-hdr">维度</div>
+        <div class="cmp-hdr net-hdr">🏢 互联网</div>
+        <div class="cmp-hdr gov-hdr">🏛 国央企/体制内</div>
+
+        <div class="cmp-dim">💰</div>
+        <div class="cmp-cell net">起薪高、涨幅快，SP/SSP可达40-60W</div>
+        <div class="cmp-cell gov">起薪低、涨幅慢；但福利完善、公积金高</div>
+
+        <div class="cmp-dim">📈</div>
+        <div class="cmp-cell net">扁平化、试错空间大；1年经验顶3年</div>
+        <div class="cmp-cell gov">晋升论资排辈，路径清晰但缓慢</div>
+
+        <div class="cmp-dim">⚖️</div>
+        <div class="cmp-cell net">有裁员风险，指标完不成会被淘汰；但主动离职占大多数，多为跳槽涨薪</div>
+        <div class="cmp-cell gov">几乎不裁员，编制内安全感强；退出成本极高</div>
+
+        <div class="cmp-dim">🕐</div>
+        <div class="cmp-cell net">节奏快、压力大；但弹性上班、着装自由</div>
+        <div class="cmp-cell gov">朝九晚五、双休保障；但流程冗长</div>
+
+        <div class="cmp-dim">🌟</div>
+        <div class="cmp-cell net">追求快速成长、接受不确定性、世俗意义上的成功</div>
+        <div class="cmp-cell gov">重视生活平衡、追求稳定、有政治抱负</div>
+      </div>
+      <div class="cmp-summary">
+        <div class="card" style="border-left:3px solid var(--blue);">
+          <div class="card-title" style="color:var(--blue);">💡 我的建议</div>
+          <div class="card-desc">年轻试错成本最低，大厂实习经历在任何赛道都是加分项。考公也是很好的选择。</div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--orange);">
+          <div class="card-title" style="color:var(--orange);">⚠️ 一个真相</div>
+          <div class="card-desc">互联网和体制内不是二选一——<span style="color:var(--orange);font-weight:700;">先体验再决定</span>。你的技能是可迁移的，不是选了就走不了回头路。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 9: Closing ===== -->
+  <div class="slide" data-index="9">
+    <div class="cover-deco">
+      <div class="cover-blob blob1"></div>
+      <div class="cover-blob blob2"></div>
+      <div class="cover-blob blob3"></div>
+    </div>
+    <div class="closing-content">
+      <div class="section-tag">写在最后</div>
+      <div class="closing-quote">"学思政的，也可以在互联网做出成绩"</div>
+      <div class="closing-desc">
+        今天来做分享，不是鼓励大家都去互联网，<br>
+        而是想给大家开一扇小窗——<br>
+        看看互联网行业到底是什么样的。<br><br>
+        未来的路是自己走的，<br>
+        每个人都有自己的节奏和选择。<br>
+        无论什么岗位，只要真的努力、真的有能力，<br>
+        你都一定会被看见。<br><br>
+        <strong style="color:var(--text-1);font-size:18px;">也欢迎大家加我微信，帮忙看简历、给建议，免费的不收钱——虽然也没多专业哈 😄</strong>
+      </div>
+      <div class="closing-contacts">
+        <div class="ct-item">📧 <strong>njumjc2002@163.com</strong></div>
+        <div class="ct-item">🐙 <strong>github.com/jcmeng2002</strong></div>
+        <div class="ct-item">📱 <strong>15794440922</strong></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Nav -->
+<div class="nav-bar">
+  <button class="nav-btn" onclick="prevSlide()">◀</button>
+  <div class="slide-dots" id="dots"></div>
+  <span class="slide-counter" id="counter">1 / 10</span>
+  <button class="nav-btn" onclick="nextSlide()">▶</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+let cur = 0;
+
+// ===== Lightbox =====
+const lightboxData = [
+  { src:'./photos/tencent-campus-1.jpg', title:'腾讯2025实习生招聘现场', desc:'线下招聘宣讲会实景' },
+  { src:'./photos/tencent-campus-2.jpg', title:'腾讯2026校园招聘 · 上海双选会', desc:'校招城市双选交流会现场' },
+  { src:'./photos/app-boss.jpg', title:'BOSS直聘', desc:'日常实习主要渠道之一，响应速度快，可直接与HR沟通' },
+  { src:'./photos/app-shixiseng.jpg', title:'实习僧', desc:'专注实习岗位的招聘平台，岗位信息丰富' },
+  { src:'./photos/app-maimai.jpg', title:'脉脉', desc:'职场社交平台，可获取内推信息和公司评价' },
+  { src:'./photos/site-baidu.png', title:'百度招聘官网', desc:'大厂官网网申渠道，信息权威但反馈较慢' },
+  { src:'./photos/site-bytedance.png', title:'字节跳动招聘官网', desc:'字节跳动官方招聘页面' },
+  { src:'./photos/wechat-group-1.jpg', title:'内推群', desc:'微信群内推渠道，继任招聘信息发布' },
+  { src:'./photos/wechat-group-2.jpg', title:'实习交流群', desc:'实习信息交流，认识人脉的好方式' },
+  { src:'./photos/wechat-group-3.jpg', title:'秋招信息群', desc:'秋招信息汇总，很多机会不上官网' },
+];
+let lightboxIdx = 0;
+
+function openLightbox(idx) {
+  lightboxIdx = idx;
+  const d = lightboxData[idx];
+  document.getElementById('lightbox-img').src = d.src;
+  document.getElementById('lightbox-title').textContent = d.title;
+  document.getElementById('lightbox-desc').textContent = d.desc;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(e) {
+  if (e.target.id === 'lightbox' || e.currentTarget.classList.contains('lightbox-close')) {
+    document.getElementById('lightbox').classList.remove('open');
+    e.stopPropagation();
+  }
+}
+function lightboxNav(dir, e) {
+  e.stopPropagation();
+  lightboxIdx = (lightboxIdx + dir + lightboxData.length) % lightboxData.length;
+  const d = lightboxData[lightboxIdx];
+  document.getElementById('lightbox-img').src = d.src;
+  document.getElementById('lightbox-title').textContent = d.title;
+  document.getElementById('lightbox-desc').textContent = d.desc;
+}
+document.addEventListener('keydown', e => {
+  if (document.getElementById('lightbox').classList.contains('open')) {
+    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+    if (e.key === 'ArrowLeft') lightboxNav(-1, e);
+    if (e.key === 'ArrowRight') lightboxNav(1, e);
+    return;
+  }
+});
+
+// ===== Tab Switcher =====
+function switchTab(group, tabId) {
+  // Deactivate all tabs and panels in this group
+  const tabContainer = document.getElementById(group + '-tabs');
+  tabContainer.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  // Find the clicked button and activate it
+  event.currentTarget.classList.add('active');
+  // Hide all panels
+  document.querySelectorAll('[id^="' + group + '-tab-"]').forEach(p => p.classList.remove('active'));
+  // Show target panel
+  document.getElementById(group + '-' + tabId).classList.add('active');
+}
+
+// ===== Accordion =====
+function toggleAccordion(header) {
+  const item = header.parentElement;
+  const wasOpen = item.classList.contains('open');
+  // Close all siblings
+  item.parentElement.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+  // Toggle current
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ===== Dots =====
+const dotsEl = document.getElementById('dots');
+for (let i = 0; i < total; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+}
+
+// ===== Animated counter =====
+function animateCounters(slideEl) {
+  slideEl.querySelectorAll('.num[data-target]').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    let current = 0;
+    const step = Math.max(1, Math.floor(target / 30));
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(interval); }
+      el.textContent = current;
+    }, 30);
+  });
+}
+
+function update() {
+  slides.forEach((s, i) => {
+    s.classList.remove('active', 'prev');
+    if (i === cur) s.classList.add('active');
+    else if (i < cur) s.classList.add('prev');
+  });
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+  document.getElementById('counter').textContent = `${cur + 1} / ${total}`;
+  document.getElementById('progressBar').style.width = (cur / (total - 1) * 100) + '%';
+
+  const active = slides[cur];
+  animateCounters(active);
+}
+
+function nextSlide() { if (cur < total - 1) { cur++; update(); } }
+function prevSlide() { if (cur > 0) { cur--; update(); } }
+function goTo(i) { cur = i; update(); }
+
+document.addEventListener('keydown', e => {
+  if (document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  if (document.getElementById('lightbox').classList.contains('open')) return;
+  const d = tx - e.changedTouches[0].clientX;
+  if (Math.abs(d) > 50) d > 0 ? nextSlide() : prevSlide();
+});
+
+let wheelLock = false;
+document.addEventListener('wheel', e => {
+  if (document.getElementById('lightbox').classList.contains('open')) return;
+  if (wheelLock) return;
+  wheelLock = true;
+  setTimeout(() => wheelLock = false, 600);
+  if (e.deltaY > 0) nextSlide(); else prevSlide();
+}, { passive: true });
+
+update();
+</script>
+
+</body>
+</html>
