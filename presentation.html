@@ -72,7 +72,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px 72px;
+  padding: 50px 72px 90px 72px;
   opacity: 0;
   transform: scale(0.96) translateY(12px);
   transition: opacity 0.55s cubic-bezier(.4,0,.2,1), transform 0.55s cubic-bezier(.4,0,.2,1);
@@ -659,7 +659,7 @@ body {
 
 /* ===== Responsive ===== */
 @media (max-width:900px) {
-  .slide { padding:36px 24px; }
+  .slide { padding:36px 24px 80px 24px; }
   .cover-content h1 { font-size:32px; }
   .slide-title { font-size:26px; }
   .about-compact { grid-template-columns:1fr; }
@@ -1447,6 +1447,12 @@ function update() {
 
   const active = slides[cur];
   animateCounters(active);
+  // Check overflow after layout settles
+  requestAnimationFrame(() => {
+    if (active.scrollHeight > active.clientHeight + 2) {
+      active.classList.add('overflow');
+    }
+  });
 }
 
 function nextSlide() { if (cur < total - 1) { cur++; update(); } }
