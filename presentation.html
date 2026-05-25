@@ -536,7 +536,9 @@ body {
 .type-card ul li::marker { color:var(--blue); }
 
 /* ===== Resume Tips ===== */
-.resume-wrap { width:100%; max-width:1100px; }
+.resume-wrap { width:100%; max-width:1100px; max-height: calc(100vh - 220px); overflow-y: auto; padding-right: 8px; }
+.resume-wrap::-webkit-scrollbar { width: 4px; }
+.resume-wrap::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
 .tips-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 .tip-card {
   padding:20px; background:var(--surface); border:1px solid rgba(0,0,0,0.05);
