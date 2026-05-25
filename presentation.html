@@ -536,9 +536,7 @@ body {
 .type-card ul li::marker { color:var(--blue); }
 
 /* ===== Resume Tips ===== */
-.resume-wrap { width:100%; max-width:1100px; max-height: calc(100vh - 220px); overflow-y: auto; padding-right: 8px; }
-.resume-wrap::-webkit-scrollbar { width: 4px; }
-.resume-wrap::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
+.resume-wrap { width:100%; max-width:1100px; }
 .tips-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 .tip-card {
   padding:20px; background:var(--surface); border:1px solid rgba(0,0,0,0.05);
@@ -1123,21 +1121,14 @@ body {
     <div class="slide-title">简历：让HR在6秒内停下来</div>
     <div class="slide-subtitle">HR看一份简历平均6秒——你必须在6秒内让他停下来</div>
     <div class="resume-wrap">
-      <!-- 官网 vs 纸质 (swipe reveal) -->
-      <div class="type-grid" style="margin-bottom:16px;">
-        <div class="swipe-reveal" onclick="this.classList.toggle('open')">
-          <div class="swipe-reveal-bg">💻 官网简历可以写全，不限一页<br>——HR上下滑着看，信息越多越好</div>
-          <div class="swipe-reveal-fg">
-            <h4 style="font-size:14px;font-weight:700;">💻 官网简历 <span style="font-size:11px;color:var(--text-3);font-weight:300;">← 点击滑开</span></h4>
-            <p style="font-size:12px;color:var(--text-2);margin-top:4px;">可以写全，不限一页</p>
-          </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+        <div class="card" style="border-left:3px solid var(--blue);padding:16px;">
+          <h4 style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:4px;">💻 官网简历</h4>
+          <p style="font-size:12px;color:var(--text-2);">可以写全，不限一页——HR上下滑着看，信息越多越好</p>
         </div>
-        <div class="swipe-reveal" onclick="this.classList.toggle('open')">
-          <div class="swipe-reveal-bg" style="background:linear-gradient(135deg,var(--orange),var(--orange-light));">📄 纸质简历必须一页纸<br>——但不意味着内容少，做过的事可以高度凝练</div>
-          <div class="swipe-reveal-fg">
-            <h4 style="font-size:14px;font-weight:700;">📄 招聘会纸质简历 <span style="font-size:11px;color:var(--text-3);font-weight:300;">← 点击滑开</span></h4>
-            <p style="font-size:12px;color:var(--text-2);margin-top:4px;">必须一页纸，但不意味着内容少</p>
-          </div>
+        <div class="card" style="border-left:3px solid var(--orange);padding:16px;">
+          <h4 style="font-size:14px;font-weight:700;color:var(--orange);margin-bottom:4px;">📄 招聘会纸质简历</h4>
+          <p style="font-size:12px;color:var(--text-2);">必须一页纸——但不意味着内容少，做过的事可以高度凝练</p>
         </div>
       </div>
       <div class="tips-grid">
@@ -1206,6 +1197,15 @@ body {
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ===== 7b: Resume Do/Dont ===== -->
+  <div class="slide" data-index="8">
+    <div class="section-tag">PART 03 · 求职方式与简历（续）</div>
+    <div class="slide-title">简历的 ✅ 与 ❌</div>
+    <div class="slide-subtitle">来自HR的真实视角——哪些能加分，哪些直接被淘汰</div>
+    <div class="resume-wrap">
       <div class="do-dont">
         <div class="do-box">
           <h4>✅ 应该这样做</h4>
@@ -1228,11 +1228,27 @@ body {
           </ul>
         </div>
       </div>
+      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="card" style="border-left:3px solid var(--blue);text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">💡</div>
+          <div class="card-title">官网简历</div>
+          <div class="card-desc">可以写全，不限一页——HR上下滑着看，信息越多越好</div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--orange);text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">📄</div>
+          <div class="card-title">招聘会纸质简历</div>
+          <div class="card-desc">必须一页纸——但不意味着内容少，做过的事可以高度凝练</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px;text-align:center;background:var(--blue-ghost);border-color:rgba(0,82,217,0.1);">
+        <div class="card-title" style="color:var(--blue);">🎯 核心原则</div>
+        <div class="card-desc" style="font-size:14px;">秋招最多准备 <strong style="color:var(--blue);">3-4份简历</strong>，每份都拿得出手——至少是干净的、简洁的、内容清楚的</div>
+      </div>
     </div>
   </div>
 
-  <!-- ===== 8: Compare ===== -->
-  <div class="slide" data-index="8">
+  <!-- ===== 9: Compare ===== -->
+  <div class="slide" data-index="9">
     <div class="section-tag">PART 04 · 选择与取舍</div>
     <div class="slide-title">互联网 vs 国央企/体制内</div>
     <div class="slide-subtitle">没有孰优孰劣，只有适不适合——每个人个性不同，辩证看待</div>
@@ -1275,8 +1291,8 @@ body {
     </div>
   </div>
 
-  <!-- ===== 9: Closing ===== -->
-  <div class="slide" data-index="9">
+  <!-- ===== 10: Closing ===== -->
+  <div class="slide" data-index="10">
     <div class="cover-deco">
       <div class="cover-blob blob1"></div>
       <div class="cover-blob blob2"></div>
@@ -1309,7 +1325,7 @@ body {
 <div class="nav-bar">
   <button class="nav-btn" onclick="prevSlide()">◀</button>
   <div class="slide-dots" id="dots"></div>
-  <span class="slide-counter" id="counter">1 / 10</span>
+  <span class="slide-counter" id="counter">1 / 11</span>
   <button class="nav-btn" onclick="nextSlide()">▶</button>
 </div>
 
