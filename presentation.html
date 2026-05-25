@@ -72,7 +72,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px 72px 90px 72px;
+  padding: 40px 72px 80px 72px;
   opacity: 0;
   transform: scale(0.96) translateY(12px);
   transition: opacity 0.55s cubic-bezier(.4,0,.2,1), transform 0.55s cubic-bezier(.4,0,.2,1);
@@ -197,7 +197,7 @@ body {
   max-height:0; overflow:hidden; opacity:0;
   transition:max-height 0.45s cubic-bezier(.4,0,.2,1), opacity 0.35s;
 }
-.reveal-block.open .reveal-content { max-height:300px; opacity:1; }
+.reveal-block.open .reveal-content { max-height:200px; opacity:1; }
 .reveal-trigger::after { content:'  ▸'; font-size:12px; color:var(--blue); transition:transform 0.3s; display:inline-block; }
 .reveal-block.open .reveal-trigger::after { transform:rotate(90deg); }
 
@@ -233,8 +233,8 @@ body {
 .accordion-item:hover { box-shadow:var(--shadow-md); }
 .accordion-item.open { border-color:var(--blue); border-left:3px solid var(--blue); }
 .accordion-header {
-  padding:14px 18px; cursor:pointer; display:flex; justify-content:space-between;
-  align-items:center; font-weight:700; font-size:14px;
+  padding:10px 14px; cursor:pointer; display:flex; justify-content:space-between;
+  align-items:center; font-weight:700; font-size:13px;
   user-select:none; transition:background 0.2s;
 }
 .accordion-header:hover { background:var(--blue-ghost); }
@@ -244,9 +244,9 @@ body {
 .accordion-item.open .accordion-arrow { transform:rotate(180deg); }
 .accordion-body {
   max-height:0; overflow:hidden; transition:max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.3s;
-  padding:0 18px;
+  padding:0 14px;
 }
-.accordion-item.open .accordion-body { max-height:400px; padding:0 18px 16px; }
+.accordion-item.open .accordion-body { max-height:350px; padding:0 14px 10px; }
 
 /* ===== Photo Card (interactive) ===== */
 .photo-card {
@@ -439,46 +439,46 @@ body {
 /* ===== Timeline ===== */
 .timeline-wrap { width:100%; max-width:1050px; }
 .tl {
-  position:relative; padding-left:36px;
+  position:relative; padding-left:28px;
 }
 .tl::before {
-  content:''; position:absolute; left:11px; top:0; bottom:0; width:2px;
+  content:''; position:absolute; left:7px; top:0; bottom:0; width:2px;
   background: linear-gradient(to bottom, var(--blue), var(--blue-light), var(--green-light), transparent);
   border-radius:2px;
 }
 .tl-item {
-  position:relative; margin-bottom:20px; padding:18px 22px;
+  position:relative; margin-bottom:6px; padding:8px 12px;
   background:var(--surface); border:1px solid rgba(0,0,0,0.05);
   border-radius:var(--radius-sm); box-shadow:var(--shadow-sm);
   transition:all 0.3s;
 }
 .tl-item:hover { box-shadow:var(--shadow-md); transform:translateX(5px); border-left:3px solid var(--blue); }
 .tl-item::before {
-  content:''; position:absolute; left:-30px; top:22px;
-  width:10px; height:10px; border-radius:50%;
-  background:var(--surface); border:2.5px solid var(--blue);
-  box-shadow:0 0 0 3px var(--blue-pale);
+  content:''; position:absolute; left:-24px; top:14px;
+  width:8px; height:8px; border-radius:50%;
+  background:var(--surface); border:2px solid var(--blue);
+  box-shadow:0 0 0 2px var(--blue-pale);
   transition:all 0.3s;
 }
 .tl-item:hover::before { background:var(--blue); }
-.tl-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
-.tl-company { font-size:15px; font-weight:700; }
-.tl-role { font-size:13px; color:var(--blue); font-weight:700; }
-.tl-period { font-size:12px; color:var(--text-3); white-space:nowrap; }
-.tl-desc { font-size:12px; color:var(--text-2); line-height:1.6; }
+.tl-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px; }
+.tl-company { font-size:14px; font-weight:700; }
+.tl-role { font-size:12px; color:var(--blue); font-weight:700; }
+.tl-period { font-size:11px; color:var(--text-3); white-space:nowrap; }
+.tl-desc { font-size:11px; color:var(--text-2); line-height:1.5; }
 
 /* ===== Work Cards ===== */
-.work-wrap { width:100%; max-width:1100px; display:flex; flex-direction:column; gap:18px; }
-.work-badges { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:4px; }
+.work-wrap { width:100%; max-width:1100px; display:flex; flex-direction:column; gap:12px; }
+.work-badges { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:2px; }
 .w-badge { padding:6px 16px; border-radius:8px; font-size:13px; font-weight:700; }
 .wb-tencent { background:var(--blue-pale); color:var(--blue); }
 .wb-red { background:var(--red-pale); color:var(--red); }
 .wb-bili { background:var(--orange-pale); color:var(--orange); }
 .wb-byte { background:var(--purple-pale); color:var(--purple); }
 
-.w-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.w-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
 .w-card {
-  padding:22px; background:var(--surface); border:1px solid rgba(0,0,0,0.05);
+  padding:16px; background:var(--surface); border:1px solid rgba(0,0,0,0.05);
   border-radius:var(--radius); box-shadow:var(--shadow-sm);
   transition:all 0.35s cubic-bezier(.4,0,.2,1);
   position:relative; overflow:hidden;
@@ -491,9 +491,9 @@ body {
 .w-card:hover::before { transform:scaleX(1); }
 .w-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); }
 .w-card-icon {
-  width:42px; height:42px; border-radius:12px;
+  width:36px; height:36px; border-radius:10px;
   display:flex; align-items:center; justify-content:center;
-  font-size:20px; margin-bottom:14px;
+  font-size:18px; margin-bottom:10px;
 }
 .wci-blue { background:var(--blue-pale); }
 .wci-green { background:var(--green-pale); }
@@ -504,26 +504,26 @@ body {
 
 .w-card h4 { font-size:15px; font-weight:700; margin-bottom:6px; }
 .w-card p { font-size:12px; color:var(--text-2); line-height:1.7; }
-.metric { display:inline-flex; align-items:baseline; gap:3px; margin-top:8px; }
-.metric .num { font-size:26px; font-weight:700; color:var(--blue); }
+.metric { display:inline-flex; align-items:baseline; gap:3px; margin-top:6px; }
+.metric .num { font-size:22px; font-weight:700; color:var(--blue); }
 .metric .unit { font-size:12px; color:var(--text-3); }
 
 /* ===== Search ===== */
 .search-wrap { width:100%; max-width:1100px; }
 .search-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.search-sec h3 { font-size:16px; font-weight:700; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.search-sec h3 { font-size:14px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
 .search-sec h3 .ico { font-size:18px; }
 
-.flow-row { display:flex; align-items:center; gap:0; padding:16px 0; flex-wrap:wrap; }
+.flow-row { display:flex; align-items:center; gap:0; padding:10px 0; flex-wrap:wrap; }
 .flow-step { flex:1; min-width:120px; text-align:center; }
 .flow-box {
-  padding:14px 10px; background:var(--surface);
+  padding:10px 8px; background:var(--surface);
   border:1px solid rgba(0,0,0,0.05); border-radius:var(--radius-sm);
   box-shadow:var(--shadow-sm); transition:all 0.3s; cursor:pointer;
 }
 .flow-box:hover { border-color:var(--blue); box-shadow:var(--shadow-md); transform:translateY(-3px); }
-.flow-num { font-size:22px; font-weight:700; color:var(--blue); margin-bottom:2px; }
-.flow-label { font-size:13px; font-weight:700; }
+.flow-num { font-size:18px; font-weight:700; color:var(--blue); margin-bottom:2px; }
+.flow-label { font-size:12px; font-weight:700; }
 .flow-time { font-size:10px; color:var(--text-3); }
 .flow-arrow { width:24px; color:var(--blue-light); font-size:16px; flex-shrink:0; text-align:center; }
 
@@ -754,7 +754,7 @@ body {
   <div class="slide" data-index="2">
     <div class="section-tag">PART 01 · 实习地图</div>
     <div class="slide-title">五段大厂，从HR到产品再回来</div>
-    <div class="slide-subtitle">每一段都有明确的成长目标——招聘→校招运营→产品→HRBP+AI</div>
+    <div class="slide-subtitle" style="font-size:14px;margin-bottom:18px;">每一段都有明确的成长目标——招聘→校招运营→产品→HRBP+AI</div>
     <div class="timeline-wrap">
       <div class="tl stagger">
         <div class="tl-item reveal-block" onclick="this.classList.toggle('open')">
@@ -1018,15 +1018,15 @@ body {
     <div class="slide-subtitle">信息差是最大的壁垒——知道在哪里找、什么时候投、怎么投，就赢了一半</div>
     <div class="search-wrap">
       <!-- Internship Types (Accordion) -->
-      <div style="margin-bottom:20px;">
-        <div class="accordion-item open">
+      <div style="margin-bottom:10px;">
+        <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
             ☀️ 暑期实习 —— 有转正机会，相当于秋招提前批
             <span class="accordion-arrow">▼</span>
           </div>
           <div class="accordion-body">
-            <p style="font-size:13px;color:var(--text-2);line-height:1.8;">通过暑期实习转正，拿的就是秋招offer。28年毕业的话，27年2月就要开始关注，最早8月就能拿到保底offer。</p>
-            <ul style="font-size:12px;color:var(--text-2);line-height:2;padding-left:18px;margin-top:6px;">
+            <p style="font-size:13px;color:var(--text-2);line-height:1.7;">通过暑期实习转正，拿的就是秋招offer。28年毕业的话，27年2月就要开始关注，最早8月就能拿到保底offer。</p>
+            <ul style="font-size:12px;color:var(--text-2);line-height:1.8;padding-left:18px;margin-top:4px;">
               <li>转正率 <span class="has-tip">50%-70%<span class="tip-text">根据不同公司和部门有所差异，腾讯暑期实习转正率在60%左右</span></span></li>
               <li>2-5月网申，3-6月面试</li>
               <li>考公同学也可当出路，但注意精力分配</li>
@@ -1039,33 +1039,33 @@ body {
             <span class="accordion-arrow">▼</span>
           </div>
           <div class="accordion-body">
-            <p style="font-size:13px;color:var(--blue);font-weight:700;margin-bottom:8px;">主要渠道（点击图片看大图）</p>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;">
-              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(2)">
+            <p style="font-size:13px;color:var(--blue);font-weight:700;margin-bottom:6px;">主要渠道（点击图片看大图）</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px;">
+              <div class="photo-card-sm" style="height:80px;" onclick="openLightbox(2)">
                 <img src="./photos/app-boss.jpg" alt="BOSS直聘">
                 <div class="pc-label">BOSS直聘</div>
               </div>
-              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(3)">
+              <div class="photo-card-sm" style="height:80px;" onclick="openLightbox(3)">
                 <img src="./photos/app-shixiseng.jpg" alt="实习僧">
                 <div class="pc-label">实习僧</div>
               </div>
-              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(4)">
+              <div class="photo-card-sm" style="height:80px;" onclick="openLightbox(4)">
                 <img src="./photos/app-maimai.jpg" alt="脉脉">
                 <div class="pc-label">脉脉</div>
               </div>
             </div>
-            <ul style="font-size:12px;color:var(--text-2);line-height:2;padding-left:18px;">
+            <ul style="font-size:12px;color:var(--text-2);line-height:1.8;padding-left:18px;">
               <li>招聘平台：BOSS直聘、实习僧、猎聘、51job——响应快，可提前沟通</li>
               <li>内推群：交流群里发继任招聘、团队新增——还能认识人脉</li>
               <li>公众号：信息差变现，很多机会不上官网</li>
               <li>官网网申：也可以，但反馈速度相对慢</li>
             </ul>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
-              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(5)">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">
+              <div class="photo-card-sm" style="height:80px;" onclick="openLightbox(5)">
                 <img src="./photos/site-baidu.png" alt="百度招聘官网">
                 <div class="pc-label">百度招聘官网</div>
               </div>
-              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(6)">
+              <div class="photo-card-sm" style="height:80px;" onclick="openLightbox(6)">
                 <img src="./photos/site-bytedance.png" alt="字节跳动招聘官网">
                 <div class="pc-label">字节跳动招聘官网</div>
               </div>
@@ -1078,17 +1078,17 @@ body {
             <span class="accordion-arrow">▼</span>
           </div>
           <div class="accordion-body">
-            <p style="font-size:13px;color:var(--text-2);line-height:1.8;margin-bottom:10px;">找实习交流群，继任招聘、团队新增需求都有发布，还能认识人脉。很多机会不出现在官网上。</p>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(7)">
+            <p style="font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:8px;">找实习交流群，继任招聘、团队新增需求都有发布，还能认识人脉。很多机会不出现在官网上。</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+              <div class="photo-card-sm" style="height:80px;" onclick="openLightbox(7)">
                 <img src="./photos/wechat-group-1.jpg" alt="内推群">
                 <div class="pc-label">内推群</div>
               </div>
-              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(8)">
+              <div class="photo-card-sm" style="height:80px;" onclick="openLightbox(8)">
                 <img src="./photos/wechat-group-2.jpg" alt="实习交流群">
                 <div class="pc-label">实习交流群</div>
               </div>
-              <div class="photo-card-sm" style="height:90px;" onclick="openLightbox(9)">
+              <div class="photo-card-sm" style="height:80px;" onclick="openLightbox(9)">
                 <img src="./photos/wechat-group-3.jpg" alt="秋招信息群">
                 <div class="pc-label">秋招信息群</div>
               </div>
@@ -1111,10 +1111,10 @@ body {
           </div>
         </div>
         <div class="search-sec">
-          <div class="card" style="border-left:3px solid var(--blue);height:100%;display:flex;flex-direction:column;justify-content:center;">
-            <div class="card-desc" style="font-weight:700;color:var(--blue);font-size:15px;">💡 关键策略：先实习转正 > 秋招海投</div>
-            <div class="card-desc" style="margin-top:8px;">暑期实习转正率50%-70%，远高于秋招通过率。能走实习转正就别等秋招。</div>
-            <div class="card-desc" style="margin-top:8px;color:var(--orange);font-weight:700;">⚠️ 特别提醒：考公优先的话，实习可以放弃，别两头顾不上。</div>
+          <div class="card" style="border-left:3px solid var(--blue);height:100%;display:flex;flex-direction:column;justify-content:center;padding:14px;">
+            <div class="card-desc" style="font-weight:700;color:var(--blue);font-size:14px;">💡 关键策略：先实习转正 > 秋招海投</div>
+            <div class="card-desc" style="margin-top:6px;font-size:12px;">暑期实习转正率50%-70%，远高于秋招通过率。能走实习转正就别等秋招。</div>
+            <div class="card-desc" style="margin-top:6px;color:var(--orange);font-weight:700;font-size:12px;">⚠️ 特别提醒：考公优先的话，实习可以放弃，别两头顾不上。</div>
           </div>
         </div>
       </div>
@@ -1127,12 +1127,12 @@ body {
     <div class="slide-title">简历：让HR在6秒内停下来</div>
     <div class="slide-subtitle">HR看一份简历平均6秒——你必须在6秒内让他停下来</div>
     <div class="resume-wrap">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
-        <div class="card" style="border-left:3px solid var(--blue);padding:16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+        <div class="card" style="border-left:3px solid var(--blue);padding:14px;">
           <h4 style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:4px;">💻 官网简历</h4>
           <p style="font-size:12px;color:var(--text-2);">可以写全，不限一页——HR上下滑着看，信息越多越好</p>
         </div>
-        <div class="card" style="border-left:3px solid var(--orange);padding:16px;">
+        <div class="card" style="border-left:3px solid var(--orange);padding:14px;">
           <h4 style="font-size:14px;font-weight:700;color:var(--orange);margin-bottom:4px;">📄 招聘会纸质简历</h4>
           <p style="font-size:12px;color:var(--text-2);">必须一页纸——但不意味着内容少，做过的事可以高度凝练</p>
         </div>
@@ -1213,7 +1213,7 @@ body {
     <div class="slide-subtitle">来自HR的真实视角——哪些能加分，哪些直接被淘汰</div>
     <div class="resume-wrap">
       <div class="do-dont">
-        <div class="do-box">
+        <div class="do-box" style="padding:14px;">
           <h4>✅ 应该这样做</h4>
           <ul>
             <li>用动词开头（负责、搭建、独立完成）</li>
@@ -1223,7 +1223,7 @@ body {
             <li>PDF格式投递</li>
           </ul>
         </div>
-        <div class="dont-box">
+        <div class="dont-box" style="padding:14px;">
           <h4>❌ 不要这样做</h4>
           <ul>
             <li>写空话（"整理档案""协助上级完成任务"）</li>
@@ -1234,21 +1234,21 @@ body {
           </ul>
         </div>
       </div>
-      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div class="card" style="border-left:3px solid var(--blue);text-align:center;">
-          <div style="font-size:28px;margin-bottom:8px;">💡</div>
-          <div class="card-title">官网简历</div>
-          <div class="card-desc">可以写全，不限一页——HR上下滑着看，信息越多越好</div>
+      <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="card" style="border-left:3px solid var(--blue);text-align:center;padding:14px;">
+          <div style="font-size:24px;margin-bottom:6px;">💡</div>
+          <div class="card-title" style="font-size:14px;">官网简历</div>
+          <div class="card-desc" style="font-size:12px;">可以写全，不限一页——HR上下滑着看，信息越多越好</div>
         </div>
-        <div class="card" style="border-left:3px solid var(--orange);text-align:center;">
-          <div style="font-size:28px;margin-bottom:8px;">📄</div>
-          <div class="card-title">招聘会纸质简历</div>
-          <div class="card-desc">必须一页纸——但不意味着内容少，做过的事可以高度凝练</div>
+        <div class="card" style="border-left:3px solid var(--orange);text-align:center;padding:14px;">
+          <div style="font-size:24px;margin-bottom:6px;">📄</div>
+          <div class="card-title" style="font-size:14px;">招聘会纸质简历</div>
+          <div class="card-desc" style="font-size:12px;">必须一页纸——但不意味着内容少，做过的事可以高度凝练</div>
         </div>
       </div>
-      <div class="card" style="margin-top:16px;text-align:center;background:var(--blue-ghost);border-color:rgba(0,82,217,0.1);">
-        <div class="card-title" style="color:var(--blue);">🎯 核心原则</div>
-        <div class="card-desc" style="font-size:14px;">秋招最多准备 <strong style="color:var(--blue);">3-4份简历</strong>，每份都拿得出手——至少是干净的、简洁的、内容清楚的</div>
+      <div class="card" style="margin-top:12px;text-align:center;background:var(--blue-ghost);border-color:rgba(0,82,217,0.1);padding:14px;">
+        <div class="card-title" style="color:var(--blue);font-size:14px;">🎯 核心原则</div>
+        <div class="card-desc" style="font-size:13px;">秋招最多准备 <strong style="color:var(--blue);">3-4份简历</strong>，每份都拿得出手——至少是干净的、简洁的、内容清楚的</div>
       </div>
     </div>
   </div>
@@ -1315,7 +1315,7 @@ body {
         每个人都有自己的节奏和选择。<br>
         无论什么岗位，只要真的努力、真的有能力，<br>
         你都一定会被看见。<br><br>
-        <strong style="color:var(--text-1);font-size:18px;">也欢迎大家加我微信，帮忙看简历、给建议，免费的不收钱——虽然也没多专业哈 😄</strong>
+        <strong style="color:var(--text-1);font-size:18px;">会后欢迎大家多多交流，求职路上的问题随时聊，一起加油 💪</strong>
       </div>
       <div class="closing-contacts">
         <div class="ct-item">📧 <strong>njumjc2002@163.com</strong></div>
