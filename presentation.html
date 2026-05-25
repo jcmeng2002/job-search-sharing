@@ -78,12 +78,18 @@ body {
   transition: opacity 0.55s cubic-bezier(.4,0,.2,1), transform 0.55s cubic-bezier(.4,0,.2,1);
   pointer-events: none;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .slide.active {
   opacity:1; transform: scale(1) translateY(0); pointer-events: auto;
 }
 .slide.prev {
   opacity:0; transform: scale(0.96) translateY(-12px);
+}
+
+/* When content overflows, switch to top-aligned with safe scrolling */
+.slide.overflow {
+  justify-content: flex-start;
 }
 
 /* ===== Nav ===== */
@@ -1428,8 +1434,11 @@ function animateCounters(slideEl) {
 
 function update() {
   slides.forEach((s, i) => {
-    s.classList.remove('active', 'prev');
-    if (i === cur) s.classList.add('active');
+    s.classList.remove('active', 'prev', 'overflow');
+    if (i === cur) {
+      s.classList.add('active');
+      s.scrollTop = 0;
+    }
     else if (i < cur) s.classList.add('prev');
   });
   document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === cur));
@@ -1446,8 +1455,25 @@ function goTo(i) { cur = i; update(); }
 
 document.addEventListener('keydown', e => {
   if (document.getElementById('lightbox').classList.contains('open')) return;
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextSlide(); }
-  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
+  const active = slides[cur];
+  const hasOverflow = active.scrollHeight > active.clientHeight + 2;
+
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+  else if (e.key === 'ArrowDown') {
+    if (hasOverflow) {
+      const atBottom = active.scrollTop + active.clientHeight >= active.scrollHeight - 2;
+      if (!atBottom) { active.classList.add('overflow'); return; }
+    }
+    e.preventDefault(); nextSlide();
+  }
+  else if (e.key === 'ArrowUp') {
+    if (hasOverflow) {
+      const atTop = active.scrollTop <= 2;
+      if (!atTop) { active.classList.add('overflow'); return; }
+    }
+    e.preventDefault(); prevSlide();
+  }
 });
 
 let tx = 0;
@@ -1462,6 +1488,26 @@ let wheelLock = false;
 document.addEventListener('wheel', e => {
   if (document.getElementById('lightbox').classList.contains('open')) return;
   if (wheelLock) return;
+
+  const active = slides[cur];
+  const hasOverflow = active.scrollHeight > active.clientHeight + 2;
+
+  if (hasOverflow) {
+    active.classList.add('overflow');
+    const atTop = active.scrollTop <= 2;
+    const atBottom = active.scrollTop + active.clientHeight >= active.scrollHeight - 2;
+
+    // If scrolling down and not at bottom, let it scroll inside
+    if (e.deltaY > 0 && !atBottom) return;
+    // If scrolling up and not at top, let it scroll inside
+    if (e.deltaY < 0 && !atTop) return;
+    // At boundary: allow page switch
+    if (e.deltaY > 0 && atBottom) { wheelLock = true; setTimeout(() => wheelLock = false, 600); nextSlide(); return; }
+    if (e.deltaY < 0 && atTop) { wheelLock = true; setTimeout(() => wheelLock = false, 600); prevSlide(); return; }
+    return;
+  }
+
+  active.classList.remove('overflow');
   wheelLock = true;
   setTimeout(() => wheelLock = false, 600);
   if (e.deltaY > 0) nextSlide(); else prevSlide();
